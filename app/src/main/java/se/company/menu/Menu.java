@@ -142,7 +142,6 @@ public class Menu {
         System.out.println("| 4) Print out work being done");
         System.out.println("| 5) Add super employee to team");
         System.out.println("| 6) Add three super employee, with powers, to team");
-        System.out.println("| 7) Salary report");
         System.out.println("| m) Print menu");
         System.out.println("| qQ) Quit");
         System.out.println(" -----------------");
