@@ -1,6 +1,9 @@
 package se.company.menu;
 import se.company.resource.NormalEmployee;
 import se.company.resource.Team;
+import se.company.resource.SuperEmployee;
+import se.company.resource.SuperPower;
+
 
 import java.util.Scanner;
 
@@ -71,16 +74,56 @@ public class Menu {
                     System.out.println(team.work());
                     break;
                 case "5":
-                    System.out.println("This is 5");
+                    if (team == null) {
+                        System.out.println("No team exists. " +
+                                "Create a team first (option 1).");
+                        break;
+                    }
+                    System.out.println("# Create new SuperEmployee");
+                    System.out.print(" Enter name: ");
+                    String sName = scanner.nextLine();
+
+                    System.out.print(" Enter work: ");
+                    String sWork = scanner.nextLine();
+
+                    SuperEmployee sup = new SuperEmployee(sName, sWork);
+                    team.add(sup);
+
+                    System.out.println(team);
                     break;
                 case "6":
-                    System.out.println("This is 6");
+                    if (team == null) {
+                        System.out.println("No team exists. Create a team first (option 1).");
+                        break;
+                    }
+                    SuperPower flight = new SuperPower("Flight", "Fly at supersonic speeds.");
+                    SuperPower strength = new SuperPower("Strength", "Really strong to lift a house.");
+                    SuperPower invisibility = new SuperPower("Invisibility", "Become invisible to the naked eye.");
+
+                    SuperEmployee clark = new SuperEmployee("Clark Kent", "IT");
+                    clark.addPower(flight);
+                    clark.addPower(strength);
+
+                    SuperEmployee jessica = new SuperEmployee("Jessica Jones", "Investigations");
+                    jessica.addPower(strength);
+                    jessica.addPower(flight);
+
+                    SuperEmployee wade = new SuperEmployee("Wade Wilson", "Public relations");
+                    wade.addPower(invisibility);
+                    wade.addPower(strength);
+
+                    // Add them to the team
+                    team.add(clark);
+                    team.add(jessica);
+                    team.add(wade);
+
+                    System.out.println(team);
                     break;
+
                 case "7":
-                    System.out.println("This is 7");
                     break;
                 case "m":
-                    System.out.println("This is m");
+                    printMenu();
                     break;
                 case "q":
                 case "Q":

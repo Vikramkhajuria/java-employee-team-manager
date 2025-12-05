@@ -4,6 +4,7 @@ public class NormalEmployee extends Employee
 {
     public NormalEmployee(String name, String work, int salary){
         super(name, work, salary);
+        // not using salary
     }
     @Override
     public String work(){

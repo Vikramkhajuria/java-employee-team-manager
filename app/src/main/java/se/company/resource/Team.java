@@ -34,6 +34,12 @@ public class Team {
             if(!w.isEmpty()){
                 result += " " + w + "\n";
             }
+            if (e instanceof SuperEmployee) {
+                SuperEmployee sup = (SuperEmployee) e;
+                for (SuperPower p : sup.getPowers()){
+                    result += "    " + p.usePower() + "\n";
+                }
+            }
         }
         return result;
     }
