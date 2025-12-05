@@ -1,10 +1,14 @@
 package se.company.menu;
+import se.company.resource.NormalEmployee;
+import se.company.resource.Team;
 
 import java.util.Scanner;
 
 public class Menu {
 
     private Scanner scanner = new Scanner(System.in);
+    private Team team;
+
 
     public void start() {
         boolean running = true;
@@ -17,16 +21,54 @@ public class Menu {
 
             switch (choice) {
                 case "1" :
-                    System.out.println("This is 1");
+                    team = new Team();
+                    System.out.println(team);
                     break;
                 case "2" :
-                    System.out.println("This is 2");
+                    if (team == null) {
+                        System.out.println("No team exists. Create a team first (option 1).");
+                        break;
+                    }
+
+                    System.out.println("Create new normal employee");
+                    System.out.print("Enter name: ");
+                    String name = scanner.nextLine();
+
+                    System.out.print("Enter work: ");
+                    String work = scanner.nextLine();
+
+                    System.out.print("Enter salary: ");
+                    int salary = Integer.parseInt(scanner.nextLine());
+
+
+                    // norm for normal employee
+                    NormalEmployee norm = new NormalEmployee(name, work, salary);
+                    team.add(norm);
+                    System.out.println(team);
                     break;
                 case "3" :
-                    System.out.println("This is 3");
+                    if (team == null) {
+                        System.out.println("No team exists. " +
+                                "Create a team first (option 1).");
+                        break;
+                    }
+                    NormalEmployee jane = new NormalEmployee("Jane Doe", "IT", 30000);
+                    NormalEmployee john = new NormalEmployee("John Doe", "Economic", 30000);
+                    NormalEmployee jr   = new NormalEmployee("Little JR Doe", "Trainee", 1000);
+
+                    team.add(jane);
+                    team.add(john);
+                    team.add(jr);
+
+                    System.out.println(team);
                     break;
                 case  "4" :
-                    System.out.println("This is 4");
+                    if (team == null) {
+                        System.out.println("No team exists. " +
+                                "Create a team first (option 1).");
+                        break;
+                    }
+                    System.out.println(team.work());
                     break;
                 case "5":
                     System.out.println("This is 5");
@@ -39,6 +81,7 @@ public class Menu {
                     break;
                 case "m":
                     System.out.println("This is m");
+                    break;
                 case "q":
                 case "Q":
                     running = false;
