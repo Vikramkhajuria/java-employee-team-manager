@@ -15,12 +15,17 @@ public class Menu {
 
     public void start() {
         boolean running = true;
-        printMenu();
+
 
         while (running) {
+            printMenu();
             System.out.print("Enter your choice: ");
-            // Using string as choice because of q and Q
-            String choice = scanner.nextLine();
+
+            if (!scanner.hasNextLine()) {
+                System.out.println("\nNo input available. Exiting...");
+                break;
+            }
+            String choice = scanner.nextLine().trim();
 
             switch (choice) {
                 case "1" :
@@ -44,7 +49,7 @@ public class Menu {
                     int salary = Integer.parseInt(scanner.nextLine());
 
 
-                    // norm for normal employee
+
                     NormalEmployee norm = new NormalEmployee(name, work, salary);
                     team.add(norm);
                     System.out.println(team);

@@ -43,7 +43,4 @@ public class Team {
         }
         return result;
     }
-
-
-
 }
